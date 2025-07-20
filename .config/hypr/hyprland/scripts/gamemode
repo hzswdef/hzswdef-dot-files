@@ -1,0 +1,35 @@
+#!/bin/sh
+
+enable() {
+	hyprctl --batch \
+		"keyword animations:enabled 0;" \
+		"keyword decoration:shadow:enabled 0;" \
+		"keyword decoration:blur:enabled 0;" \
+		"keyword general:gaps_in 0;" \
+		"keyword general:gaps_out 0;" \
+		"keyword general:border_size 0;" \
+		"keyword general:allow_tearing 1;" \
+		"keyword decoration:rounding 0;" \
+		"keyword xwayland:force_zero_scaling 1"
+}
+
+disable() {
+	hyprctl reload
+}
+
+if [ -z "$1" ]; then
+    if [ "$(hyprctl getoption animations:enabled | grep 'int:' | awk '{print $2}')" = "1" ]; then
+        enable
+    else
+        disable
+    fi
+elif [[ "$1" = "1" || "$1" = "true" || "$1" = "on" ]]; then
+    enable
+elif [[ "$1" = "0" || "$1" = "false" || "$1" = "off" ]]; then
+    disable
+else
+    echo "Usage: hypr-gamemode [0|1|true|false|on|off]"
+    exit 1
+fi
+
+exit 0
