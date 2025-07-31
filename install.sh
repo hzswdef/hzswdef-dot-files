@@ -3,63 +3,96 @@
 sudo pacman -Syyu
 
 sudo pacman -S \
+    7zip \
     amd-ucode \
+    ananicy-cpp \
     base \
+    base-devel \
     btop \
     ccache \
+    clang \
     cliphist \
+    cmake \
     dialog \
     discord \
+    dkms \
     earlyoom \
     eza \
     fastfetch \
     fcitx5 \
-    firefox \
-    fisher \
-    fuzzel \
+    fish \
+    fuse2 \
+    gamemode \
+    git \
     gnome-disk-utility \
     goverlay \
     grub \
-    hyprpaper \
-    hyprshot \
+    gst-plugin-pipewire \
+    gvfs-mtp \
     imv \
     irqbalance \
-    iw \
     kitty \
+    less \
+    lib32-gamemode \
     lib32-mangohud \
+    lib32-opencl-nvidia \
+    libpulse \
     libva-nvidia-driver \
+    linux-firmware \
     linux-zen \
+    linux-zen-headers \
     lld \
+    llvm \
     lrzip \
-    ly \
+    mangohud \
+    mesa-utils \
     mold \
     mpv \
     nano \
     nautilus \
+    net-tools \
+    networkmanager \
+    nmap \
     noto-fonts-cjk \
+    ntfs-3g \
     nvidia-open-dkms \
+    nvidia-settings \
+    nvidia-utils \
     nvm \
+    opencl-nvidia \
+    openmp \
+    openssh \
+    os-prober \
     pacman-contrib \
     pavucontrol-qt \
+    pipewire \
+    pipewire-alsa \
+    pipewire-jack \
+    pipewire-pulse \
     qbittorrent \
     reflector \
     resources \
     sof-firmware \
-    spotify-launcher \
     squashfs-tools \
     starship \
     steam \
-    tree \
     ttf-jetbrains-mono \
+    ttf-liberation \
     unace \
     unzip \
+    v4l2loopback-dkms \
     wget \
-    wofi \
+    wireplumber \
+    xdg-desktop-portal-gtk \
+    xdg-desktop-portal-hyprland \
     zed \
     zram-generator
 
+sudo mkinitcpio -P
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
 git clone https://aur.archlinux.org/yay.git
-cd yay-bin
+cd yay
 makepkg -sric
 
 yay -S \
@@ -67,22 +100,27 @@ yay -S \
     ast-firmware \
     ayugram-desktop-bin \
     bibata-cursor-theme \
-    bottles \
     cachyos-ananicy-rules-git \
+    equicord-installer-bin \
+    gamescope-nvidia \
+    hiddify-next-bin \
     hyprland-plugin-hyprexpo \
-    jetbrains-toolbox \
     obs-studio-git \
     osu-lazer-bin \
-    quickshell \
+    osu-mime \
+    protontricks \
     r2modman-bin \
     ryzen_smu-dkms-git \
     ryzenadj \
+    spicetify-cli \
+    spicetify-marketplace-bin \
+    spotify \
     upd72020x-fw \
     wd719x-firmware \
-    wlogout \
-    yay
+    yay \
+    zen-browser-bin
 
-cp -rf ./.config/* ~/.config
+# cp -rf ./.config/* ~/.config
 
 xdg-mime default imv.desktop image/gif
 xdg-mime default imv.desktop image/webp
@@ -90,5 +128,3 @@ xdg-mime default imv.desktop image/jpx
 xdg-mime default imv.desktop image/jpeg
 xdg-mime default imv.desktop image/jpg
 xdg-mime default imv.desktop image/png
-
-echo "Continue with ARU guidelines: https://ventureo.codeberg.page/"
